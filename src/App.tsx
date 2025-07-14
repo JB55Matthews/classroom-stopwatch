@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './styles/App.css'
+import Clock from './Clock';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const [mode, setMode] = useState("stopwatch");
+
+    return(
+        <>
+        <div className="tab-switcher">
+            <button className={mode === 'stopwatch' ? 'active' : ''} onClick={() => setMode('stopwatch')}>Stopwatch</button>
+            <button className={mode === 'timer' ? 'active' : ''} onClick={() => setMode('timer')}>Timer</button>
+        </div>
+        <Clock mode={mode}/>
+        <div className="butterfly butterfly1" />
+        <div className="butterfly butterfly2" />
+        <div className="butterfly butterfly3" />
+        <div className="butterfly butterfly4" />
+        <div className="butterfly butterfly5" />
+        <div className="butterfly butterfly6" />
+        <div className="butterfly butterfly7" />
+        <div className="butterfly butterfly8" />
+        </>
+    )
+    
 }
 
 export default App
