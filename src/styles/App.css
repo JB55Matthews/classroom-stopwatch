@@ -31,8 +31,6 @@ body {
 
 .butterfly {
   position: absolute;
-  width: 40px;
-  height: 40px;
   background-image: url('../assets/butterfly.png'); /* Your saved image path */
   background-size: contain;
   background-repeat: no-repeat;
@@ -44,66 +42,66 @@ body {
 }
 
 .butterfly1 {
-  top: 10%;
-  left: 20%;
-  width: 100px;
-  height: 100px;
+  top: 10vh;
+  left: 10vw;
+  width: 15vw;
+  height: 15vw;
   animation-delay: 0s;
   rotate: 40deg;
 }
 .butterfly2 {
-  top: 15%;
-  right: 15%;
-  width: 140px;
-  height: 140px;
+  top: 12vh;
+  right: 12vw;
+  width: 12vw;
+  height: 12vw;
   animation-delay: 2s;
   rotate: 3deg;
 }
 .butterfly3 {
-  bottom: 15%;
-  left: 10%;
-  width: 150px;
-  height: 150px;
+  bottom: 8vh;
+  left: 8vw;
+  width: 10vw;
+  height: 10vw;
   animation-delay: 1s;
   rotate: 12deg;
 }
 .butterfly4 {
-  bottom: 10%;
-  right: 20%;
-  width: 140px;
-  height: 140px;
+  bottom: 10vh;
+  right: 10vh;
+  width: 14vw;
+  height: 14vw;
   animation-delay: 1s;
   rotate: -30deg;
 }
 .butterfly5 {
-  bottom: 40%;
-  right: 70%;
-  width: 110px;
-  height: 110px;
+  bottom: 40vh;
+  right: 75vw;
+  width: 8vw;
+  height: 8vw;
   animation-delay: 2s;
   rotate: -30deg;
 }
 .butterfly6 {
-  top: 5%;
-  right: 40%;
-  width: 180px;
-  height: 180px;
+  top: 3vh;
+  right: 40vw;
+  width: 12vw;
+  height: 12vw;
   animation-delay: 1.5s;
   rotate: -10deg;
 }
 .butterfly7 {
-  bottom: 12%;
-  left: 30%;
-  width: 110px;
-  height: 110px;
+  bottom: 2vh;
+  left: 40vw;
+  width: 11vw;
+  height: 11vw;
   animation-delay: 2s;
   rotate: -15deg;
 }
 .butterfly8 {
-  bottom: 40%;
-  left: 70%;
-  width: 110px;
-  height: 110px;
+  bottom: 40vh;
+  left: 70vw;
+  width: 9vw;
+  height: 9vw;
   animation-delay: 6s;
   rotate: 45deg;
 }
@@ -121,4 +119,25 @@ body {
 @keyframes flutter {
   0%, 100% { transform: scaleX(1) rotate(0deg); }
   50%      { transform: scaleX(1.05) rotate(1deg); }
+}
+
+@media (max-width: 768px) {
+
+  .butterfly1{width: 20vw; height: 20vw;}
+  .butterfly2{width: 17vw; height: 17vw;}
+  .butterfly3{width: 15vw; height: 15vw;}
+  .butterfly4{width: 21vw; height: 21vw;}
+  .butterfly5{width: 12vw; height: 12vw;}
+  .butterfly6{width: 22vw; height: 22vw;}
+  .butterfly7{width: 11vw; height: 11vw;}
+  .butterfly8{width: 8vw; height: 8vw;}
+
+}
+
+@media (max-height: 820px){
+  .butterfly6{width: 0px; height: 0px;}
+}
+
+@media (max-width: 500px) {
+  .butterfly5, .butterfly8{width: 0px; height: 0px;}
 }

@@ -6,4 +6,5 @@ body{
   height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   background-color: hsl(0, 0%, 20%);
+  background-image: linear-gradient(to bottom right, rgb(42, 2, 43), hsl(0, 0%, 20%))
 }

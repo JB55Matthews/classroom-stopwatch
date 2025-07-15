@@ -6,6 +6,7 @@ export default function Timer() {
     const [minutes, setMinutes] = useState('00');
     const [seconds, setSeconds] = useState('00');
     const [elapsedTime, setElapsedTime] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false);
     const [isRunning, setIsRunning] = useState(false);
     const intervalIdRef = useRef(0);
 
@@ -26,41 +27,56 @@ export default function Timer() {
         return () => clearInterval(intervalIdRef.current!);
     }, [isRunning]);
 
-    const calculateTimeInMs = () => {
+    function calculateTimeInMs() {
         const h = parseInt(hours) || 0;
         const m = parseInt(minutes) || 0;
         const s = parseInt(seconds) || 0;
         return ((h * 60 * 60) + (m * 60) + s) * 1000;
       };
 
-    const start = () => {
-        const total = calculateTimeInMs();
-        if (total > 0) {
+      function start() {
+        if (!hasStarted) {
+          const total = calculateTimeInMs();
+          if (total > 0) {
             setElapsedTime(total);
+            setHasStarted(true);
             setIsRunning(true);
+          }
+        } else if (!isRunning && elapsedTime > 0) {
+          // Resuming from pause
+          setIsRunning(true);
         }
-    };
+      }
 
-    function formatTime(){
-        let hours = Math.floor(elapsedTime / (1000*60*60));
-        let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
-        let seconds = Math.floor(elapsedTime / (1000) % 60);
-
-        return `${hours.toString().padStart(2,"0")}:${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
-    }
-
-
-    const reset = () => {
+      function stop() {
         setIsRunning(false);
+        if (intervalIdRef.current) {
+          clearInterval(intervalIdRef.current);
+          intervalIdRef.current = 0;
+        }
+      }
+
+
+    function reset() {
+        setIsRunning(false);
+        setHasStarted(false);
         setElapsedTime(0);
         setHours("00");
         setMinutes("00");
         setSeconds("00");
     };
 
+    function formatTime(){
+      let hours = Math.floor(elapsedTime / (1000*60*60));
+      let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
+      let seconds = Math.floor(elapsedTime / (1000) % 60);
+
+      return `${hours.toString().padStart(2,"0")}:${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
+  }
+
     return (
     <div className="timer-container">
-      {!isRunning ? (
+      {!hasStarted ? (
         <div className="time-inputs">
           <input type="number" value={hours} min="0"  max="23"
             onChange={e => setHours(e.target.value)}/>:
